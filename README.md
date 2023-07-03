@@ -18,3 +18,12 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 ### Concurrency
 
 ### Persistence Security
+
+
+## Links which helped me
+
+- [Why is the CPU not needed to service I/O requests?](https://stackoverflow.com/questions/13596997/why-is-the-cpu-not-needed-to-service-i-o-requests)
+
+## Some topics worth diving deeper
+
+- [ ] fork() vs spawn()
