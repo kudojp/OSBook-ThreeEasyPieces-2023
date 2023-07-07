@@ -35,8 +35,8 @@ Memory virtualization
 |13| |`23/07/05` | |
 |14| |`23/07/05` | |
 |15|Mechanism: address translation |`23/07/06` | |
-|16| | | |
-|17| | | |
+|16| Segmentation|`23/07/07` | |
+|17|Free-Space Management | `23/07/07`| |
 |18| | | |
 |19| | | |
 |20| | | |
@@ -59,12 +59,19 @@ Memory virtualization
 
 ## Topics worth investigating/discussing
 
-> a recent paper by systems researchers from Microsoft, Boston University, and ETH in Switzerland details some problems with fork(), and advocates for other, simpler process creation APIs such as spawn() [B+19].
+> a recent paper by systems researchers from Microsoft, Boston University, and ETH in Switzerland details some problems with fork(), and advocates for other, simpler process creation APIs such as spawn() [B+19].   
 > P45. §5. Interlude: Process API
 
 
-> Note that there are two types of register saves/restores that happen during this protocol. The first is when the timer interrupt occurs; in this case, the user registers of the running process are implicitly saved by the hardware, using the kernel stack of that process. The second is when the OS decides to switch from A to B; in this case, the kernel registers are explicitly saved by the software (i.e., the OS), but this time into memory in the process structure of the process. The latter action moves the system from running as if it just trapped into the kernel from A to as if it just trapped into the kernel from B.
+> Note that there are two types of register saves/restores that happen during this protocol. The first is when the timer interrupt occurs; in this case, the user registers of the running process are implicitly saved by the hardware, using the kernel stack of that process. The second is when the OS decides to switch from A to B; in this case, the kernel registers are explicitly saved by the software (i.e., the OS), but this time into memory in the process structure of the process. The latter action moves the system from running as if it just trapped into the kernel from A to as if it just trapped into the kernel from B.   
 > P.59 §6. Mechanism: limited direct execution
 
-> CFS (Completely Fair Scheduler) addresses this by keeping processes in a red-black tree.
+> CFS (Completely Fair Scheduler) addresses this by keeping processes in a red-black tree.   
 > P.98 §9. Scheduling: proportional share
+
+> We’ll also assume that once memory is handed out to a client, it cannot be relocated to another location in memory. For example, if a program calls malloc() and is given a pointer to some space within the heap, that memory region is essentially “owned” by the program (and cannot be moved by the library) until the program returns it via a corresponding call to free(). Thus, no compaction of free space is possible, which would be useful to combat fragmentation.   
+> P.168 §17. Free-Space Management
+> 
+> 👉 Q. In reality, is it possible that a compaction is done inside the heap to remove internal fragmentation?
+> That is, can the virtual memory address represented by x change while the program is running?	  
+> `int *x = malloc(sizeof(int))`
