@@ -63,6 +63,11 @@ Memory Virtualization
 > P45. §5. Interlude: Process API
 
 
+> In a child process, it cannot stdout anymore. However in the parent process, even if STDOUT_FILENO is closed in the child process, it can stdout.
+> P.48 §5. Interlude: Process API - Homework
+
+Why is this?
+
 > Note that there are two types of register saves/restores that happen during this protocol. The first is when the timer interrupt occurs; in this case, the user registers of the running process are implicitly saved by the hardware, using the kernel stack of that process. The second is when the OS decides to switch from A to B; in this case, the kernel registers are explicitly saved by the software (i.e., the OS), but this time into memory in the process structure of the process. The latter action moves the system from running as if it just trapped into the kernel from A to as if it just trapped into the kernel from B.   
 > P.59 §6. Mechanism: limited direct execution
 
