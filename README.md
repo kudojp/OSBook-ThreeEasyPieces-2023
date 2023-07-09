@@ -13,7 +13,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 
 ### I. Virtualization
 
-CPU vitrualization
+CPU Virtualization
 
 || Chapter | Read | Homework |
 |-|-|-|-|
@@ -26,7 +26,7 @@ CPU vitrualization
 |9|Scheduling: Proportional Share |`23/07/05` | |
 |10|Multiprocessor Scheduling | | |
 
-Memory virtualization
+Memory Virtualization
 
 || Chapter | Read | Homework |
 |-|-|-|-|
@@ -37,8 +37,8 @@ Memory virtualization
 |15|Mechanism: address translation |`23/07/06` | |
 |16| Segmentation|`23/07/07` | |
 |17|Free-Space Management | `23/07/07`| |
-|18| | | |
-|19| | | |
+|18| Paging: Introduction|`23/07/08` | |
+|19|Paging: Faster Translations (TLB)| `23/07/09`| |
 |20| | | |
 |21| | | |
 |22| | | |
@@ -69,14 +69,22 @@ Memory virtualization
 > CFS (Completely Fair Scheduler) addresses this by keeping processes in a red-black tree.   
 > P.98 §9. Scheduling: proportional share
 
-> You might have noticed that we haven’t been talking about system calls when discussing malloc() and free(). The reason for this is simple: they are not system calls, but rather library calls. Thus the malloc library manages space within your virtual address space, but itself is built on top of some system calls which call into the OS to ask for more memory or release some back to the system. One such system call is called brk, which is used to change the location of the program’s break: the location of the end of the heap. It takes one argument (the address of the new break), and thus either increases or decreases the size of the heap based on whether the new break is larger or smaller than the current break. An additional call sbrk is passed an increment but otherwise serves a similar purpose.   
-> Note that you should never directly call either brk or sbrk. They are used by the memory-allocation library; if you try to use them, you will likely make something go (horribly) wrong. Stick to malloc() and free() instead.   
+> You might have noticed that we haven’t been talking about system calls when discussing `malloc()` and `free()`. The reason for this is simple: they are not system calls, but rather library calls. Thus the malloc library manages space within your virtual address space, but itself is built on top of some system calls which call into the OS to ask for more memory or release some back to the system. One such system call is called `brk`, which is used to change the location of the program’s break: the location of the end of the heap. It takes one argument (the address of the new break), and thus either increases or decreases the size of the heap based on whether the new break is larger or smaller than the current break. An additional call `sbrk` is passed an increment but otherwise serves a similar purpose.   
+> Note that you should never directly call either `brk` or `sbrk`. They are used by the memory-allocation library; if you try to use them, you will likely make something go (horribly) wrong. Stick to `malloc()` and `free()` instead.   
 > P.138 §14. Interlude: Memory API
 
-How about stack?
+Actually, program has to ask OS in order to get more memory used for heap.
+That being considered, I think that memory space virtualization is achieved by OS + `malloc()`.
+
+Q. How about stack?
 
 > Finally, you can also obtain memory from the operating system via the mmap() call. By passing in the correct arguments, mmap() can create an anonymous memory region within your program — a region which is not associated with any particular file but rather with swap space, something we’ll discuss in detail later on in virtual memory. This memory can then also be treated like a heap and managed as such. Read the manual page of mmap() for more details.   
 > P.138 §14. Interlude: Memory API
+
+> From the program's perspective, its address space starts at address 0 and grows to a maximum of 16KB.    
+> P.144 §15. Mechanism: Address Translation
+
+In reality, what is the maximum address of the address space?
 
 > 32-bit address space (4GB in size)   
 > P.155 §16. Segmentation
@@ -88,12 +96,46 @@ For a machine with 64-but registers, it is:
 `2**64 byte` offset = `2**10 * 2**10 * 2**10 * 2**10 * 2**10 * 2**10 * 16 byte` offset = `16EB` offset.   
 
 
+> The hardware uses segment registers during translation.   
+> One common approach, sometimes referred to as an explicit approach ... This technique is used in th VAX/VMS system.   
+> P.158 §16. Segmentation
+
+In this approach,
+- Segment register
+  - base register of Code segment
+  - bounds register of Code segment
+  - base register of Heap segment
+  - bounds register of Heap segment
+  - base register of Stack segment
+  - bounds register of Stack segment
+
+And the virtual address of our interest always has first 2 bits which specifies the segment type (code/heap/stack).
+In this way, CPU calculates the physical address with base/bounds registers of that type.
+
+In the modern CPUs, what is mentioned as `base register`s in this book corresponds to these.
+
+- Segment resister
+  - `CodeSegment`
+  - `DataSegment`
+  - `ExtraSegment`
+  - `StackSegment`
+
+I could not figure out what corresponds to bounds register.
+
 > There are other ways for the hardware to determine which segment a particular address is in. In the implicit approach, the hardware deter- mines the segment by noticing how the address was formed. If, for example, the address was generated from the program counter (i.e., it was an instruction fetch), then the address is within the code segment; if the address is based off of the stack or base pointer, it must be in the stack segment; any other address must be in the heap.
 > P.159 §16. Segmentation
 
 > We’ll also assume that once memory is handed out to a client, it cannot be relocated to another location in memory. For example, if a program calls malloc() and is given a pointer to some space within the heap, that memory region is essentially “owned” by the program (and cannot be moved by the library) until the program returns it via a corresponding call to free(). Thus, no compaction of free space is possible, which would be useful to combat fragmentation.   
 > P.168 §17. Free-Space Management
-> 
+>   
 > 👉 Q. In reality, is it possible that a compaction is done inside the heap to remove internal fragmentation?
 > That is, can the virtual memory address represented by x change while the program is running?	  
 > `int *x = malloc(sizeof(int))`
+
+
+> OS and CPU must know each other much, even though CPU companies does not develop OS by themselves.   
+> How do CPU manufacturing companies (like Intel) know/decide CPU features to be included in their CPUs?
+
+> In §17-18, a linear page table, which holds an array which holds table entries, is explained. Why don't they use HashMap to speed up?
+
+> 
