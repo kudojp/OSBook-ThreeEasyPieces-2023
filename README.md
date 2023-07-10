@@ -22,7 +22,7 @@ CPU Virtualization
 |5| Interlude: Process API | `23/07/04`| `23/07/09` (Q8 skipped)|
 |6|Mechanism: Limited Direct Execution |`23/07/04` | (Skipped)|
 |7|Scheduling: Introduction |`23/07/05` | `23/07/10`|
-|8| |`23/07/05` | |
+|8| Scheduling: The Multi-Level Feedback Queue|`23/07/05` | `23/07/10`|
 |9|Scheduling: Proportional Share |`23/07/05` | |
 |10|Multiprocessor Scheduling | | |
 
@@ -51,13 +51,6 @@ Memory Virtualization
 ### II. Concurrency
 
 ### Ⅲ. Persistence Security
-
-
-
-## Homework remainings
-
-- Skipped §5-Q8 (8. Connect STDOUT of one child process to STDIN of  another child, using pipe().)
-- 
 
 
 ## Links which helped me
