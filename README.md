@@ -25,15 +25,15 @@ CPU Virtualization
 |8| Scheduling: The Multi-Level Feedback Queue|`23/07/05` | `23/07/10`|
 |9|Scheduling: Proportional Share |`23/07/05` |`23/07/10` |
 |10|Multiprocessor Scheduling | (Skipped) | |
-|11| |`23/07/05` |N/A |
+|11|Summary Dialogue on CPU Virtualization |`23/07/05` |N/A |
 
 Memory Virtualization
 
 || Chapter | Read | Homework |
 |-|-|-|-|
-|12| |`23/07/05` |N/A|
-|13| |`23/07/05` | |
-|14| |`23/07/05` | |
+|12|A Dialogue on Memory Virtualization |`23/07/05` |N/A|
+|13|The Abstraction: Address Spaces |`23/07/05` | |
+|14|Interlude: Memory API |`23/07/05` | |
 |15|Mechanism: address translation |`23/07/06` | |
 |16| Segmentation|`23/07/07` | |
 |17|Free-Space Management | `23/07/07`| |
