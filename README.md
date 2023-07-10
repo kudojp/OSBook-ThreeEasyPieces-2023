@@ -23,15 +23,15 @@ CPU Virtualization
 |6|Mechanism: Limited Direct Execution |`23/07/04` | (Skipped)|
 |7|Scheduling: Introduction |`23/07/05` | `23/07/10`|
 |8| Scheduling: The Multi-Level Feedback Queue|`23/07/05` | `23/07/10`|
-|9|Scheduling: Proportional Share |`23/07/05` | |
-|10|Multiprocessor Scheduling | | |
+|9|Scheduling: Proportional Share |`23/07/05` |`23/07/10` |
+|10|Multiprocessor Scheduling | (Skipped) | |
+|11| |`23/07/05` |N/A |
 
 Memory Virtualization
 
 || Chapter | Read | Homework |
 |-|-|-|-|
-|11| |`23/07/05` | |
-|12| |`23/07/05` | |
+|12| |`23/07/05` |N/A|
 |13| |`23/07/05` | |
 |14| |`23/07/05` | |
 |15|Mechanism: address translation |`23/07/06` | |
