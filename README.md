@@ -18,10 +18,10 @@ CPU Virtualization
 || Chapter | Read | Homework |
 |-|-|-|-|
 |3| A Dialogue on Virtualization| `23/07/03`| N/A|
-|4| The Abstraction: The Process | `23/07/03` |`23/07/03` |
-|5| Interlude: Process API | `23/07/04`| |
-|6| |`23/07/04` | |
-|7| |`23/07/05` | |
+|4| The Abstraction: The Process | `23/07/03` |`23/07/03`|
+|5| Interlude: Process API | `23/07/04`| `23/07/09` (Q8 skipped)|
+|6|Mechanism: Limited Direct Execution |`23/07/04` | (Skipped)|
+|7|Scheduling: Introduction |`23/07/05` | `23/07/10`|
 |8| |`23/07/05` | |
 |9|Scheduling: Proportional Share |`23/07/05` | |
 |10|Multiprocessor Scheduling | | |
@@ -51,6 +51,13 @@ Memory Virtualization
 ### II. Concurrency
 
 ### Ⅲ. Persistence Security
+
+
+
+## Homework remainings
+
+- Skipped §5-Q8 (8. Connect STDOUT of one child process to STDIN of  another child, using pipe().)
+- 
 
 
 ## Links which helped me
