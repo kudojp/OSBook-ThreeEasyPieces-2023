@@ -36,3 +36,5 @@ As the quantum size increases, the scheduler becomes more unfair.
 
 Done in `homework-9-5.ipynb`.
 
+![image](https://github.com/kudojp/Read-ThreeEasyPieces-OSBook2023/assets/44487754/5f084431-5c05-4b33-93f2-66cc0af73daa)
+
