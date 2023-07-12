@@ -39,11 +39,11 @@ Memory Virtualization
 |17|Free-Space Management | `23/07/07`| |
 |18| Paging: Introduction|`23/07/08` | |
 |19|Paging: Faster Translations (TLB)| `23/07/09`| |
-|20| | | |
-|21| | | |
-|22| | | |
-|23| | | |
-|24| | | |
+|20|Paging: Smaller Tables | `23/07/11`| |
+|21|Beyond Physical Memory: Mechanisms |`23/07/12` | |
+|22|Beyond Physical Memory: Policies |`23/07/12` | |
+|23|Complex Virtual Memory Systems | | |
+|24| Summary Dialog On Memory Virtualization | |N/A |
 
 
 
@@ -141,6 +141,22 @@ I could not figure out what corresponds to bounds register.
 > OS and CPU must know each other much, even though CPU companies does not develop OS by themselves.   
 > How do CPU manufacturing companies (like Intel) know/decide CPU features to be included in their CPUs?
 
-> In §17-18, a linear page table, which holds an array which holds table entries, is explained. Why don't they use HashMap to speed up?
+> In multi-level page tables,
+> `PTEAddr = (PDE.PFN << SHIFT) + (PTIndex * sizeof(PTE))`
+> P.223 §20. Paging Smaller Tables
+> 👉 Q. What is `SHIFT`?
+> How does it convert (PDE.PFN, PTIndex) into physical address?
 
-> 
+> In inverted pag tables, a linear scan would be expensive, and thus a hash table is often built over the base structure to speed up lookups.
+> P.226 §20. Paging Smaller Tables
+> 👉 Q. Why is hash table is used in inverted page tables, but not in other page tables such as single/multiple-level page tables?
+
+> What are the benefits of keeping memory usage between low water mark and high water mark with swap daemon?
+> P.237 §20. Paging Smaller Tables
+
+> Prove that replacing the page that will be accessed *furthest in the future* is the optimal policy.
+> P.244 §21. Beyond Physical Memory: Mechanisms
+
+
+> Why don't we use `doubly linked list + hash map` instead of approximating LRU?
+> P.254 §21. Beyond Physical Memory: Mechanisms
