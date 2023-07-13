@@ -13,7 +13,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 
 ### I. Virtualization
 
-CPU Virtualization
+**CPU Virtualization**
 
 || Chapter | Read | Homework |
 |-|-|-|-|
@@ -27,7 +27,7 @@ CPU Virtualization
 |10|Multiprocessor Scheduling | (Skipped) | |
 |11|Summary Dialogue on CPU Virtualization |`23/07/05` |N/A |
 
-Memory Virtualization
+**Memory Virtualization**
 
 || Chapter | Read | Homework |
 |-|-|-|-|
@@ -42,16 +42,45 @@ Memory Virtualization
 |20|Paging: Smaller Tables | `23/07/11`| |
 |21|Beyond Physical Memory: Mechanisms |`23/07/12` | |
 |22|Beyond Physical Memory: Policies |`23/07/12` | |
-|23|Complex Virtual Memory Systems | | |
-|24| Summary Dialog On Memory Virtualization | |N/A |
-
-
-
+|23|Complex Virtual Memory Systems |`23/07/13` | |
+|24| Summary Dialog On Memory Virtualization |`23/07/13` |N/A |
 
 ### II. Concurrency
 
+|| Chapter | Read | Homework |
+|-|-|-|-|
+|25| A Dialogue On Concurrency | `23/07/13` | N/A |
+|26|  |  |  |
+|27|  |  |  |
+|28|  |  |  |
+|29|  |  |  |
+|30|  |  |  |
+|31|  |  |  |
+|32|  |  |  |
+|33|  |  |  |
+|34|  |  |  |
+
 ### Ⅲ. Persistence Security
 
+|| Chapter | Read | Homework |
+|-|-|-|-|
+|35|  |  |  |
+|36|  |  |  |
+|37|  |  |  |
+|38|  |  |  |
+|39|  |  |  |
+|40|  |  |  |
+|41|  |  |  |
+|42|  |  |  |
+|43|  |  |  |
+|44|  |  |  |
+|45|  |  |  |
+|46|  |  |  |
+|47|  |  |  |
+|48|  |  |  |
+|49|  |  |  |
+|50|  |  |  |
+|51|  |  |  |
 
 ## Links which helped me
 
@@ -91,7 +120,7 @@ Q. How about stack?
 
 In reality, what is the maximum address of the address space?
 
-> 32-bit address space (4GB in size)   
+> 32-bit address space (4GB in size)    
 > P.155 §16. Segmentation
 
 For a machine with 32-bit registers, maximum virtual memory address it can represent is:   
@@ -127,13 +156,12 @@ In the modern CPUs, what is mentioned as `base register`s in this book correspon
 
 I could not figure out what corresponds to bounds register.
 
-> There are other ways for the hardware to determine which segment a particular address is in. In the implicit approach, the hardware deter- mines the segment by noticing how the address was formed. If, for example, the address was generated from the program counter (i.e., it was an instruction fetch), then the address is within the code segment; if the address is based off of the stack or base pointer, it must be in the stack segment; any other address must be in the heap.
+> There are other ways for the hardware to determine which segment a particular address is in. In the implicit approach, the hardware deter- mines the segment by noticing how the address was formed. If, for example, the address was generated from the program counter (i.e., it was an instruction fetch), then the address is within the code segment; if the address is based off of the stack or base pointer, it must be in the stack segment; any other address must be in the heap.    
 > P.159 §16. Segmentation
 
 > We’ll also assume that once memory is handed out to a client, it cannot be relocated to another location in memory. For example, if a program calls malloc() and is given a pointer to some space within the heap, that memory region is essentially “owned” by the program (and cannot be moved by the library) until the program returns it via a corresponding call to free(). Thus, no compaction of free space is possible, which would be useful to combat fragmentation.   
-> P.168 §17. Free-Space Management
->   
-> 👉 Q. In reality, is it possible that a compaction is done inside the heap to remove internal fragmentation?
+> P.168 §17. Free-Space Management    
+> 👉 Q. In reality, is it possible that a compaction is done inside the heap to remove internal fragmentation?    
 > That is, can the virtual memory address represented by x change while the program is running?	  
 > `int *x = malloc(sizeof(int))`
 
@@ -141,22 +169,29 @@ I could not figure out what corresponds to bounds register.
 > OS and CPU must know each other much, even though CPU companies does not develop OS by themselves.   
 > How do CPU manufacturing companies (like Intel) know/decide CPU features to be included in their CPUs?
 
-> In multi-level page tables,
-> `PTEAddr = (PDE.PFN << SHIFT) + (PTIndex * sizeof(PTE))`
-> P.223 §20. Paging Smaller Tables
-> 👉 Q. What is `SHIFT`?
-> How does it convert (PDE.PFN, PTIndex) into physical address?
+> In multi-level page tables,    
+> `PTEAddr = (PDE.PFN << SHIFT) + (PTIndex * sizeof(PTE))`    
+> P.223 §20. Paging Smaller Tables    
+> 👉 Q. What is `SHIFT`? How does it convert (PDE.PFN, PTIndex) into physical address?
 
-> In inverted pag tables, a linear scan would be expensive, and thus a hash table is often built over the base structure to speed up lookups.
-> P.226 §20. Paging Smaller Tables
+> In inverted pag tables, a linear scan would be expensive, and thus a hash table is often built over the base structure to speed up lookups.    
+> P.226 §20. Paging Smaller Tables    
 > 👉 Q. Why is hash table is used in inverted page tables, but not in other page tables such as single/multiple-level page tables?
 
-> What are the benefits of keeping memory usage between low water mark and high water mark with swap daemon?
+> What are the benefits of keeping memory usage between low water mark and high water mark with swap daemon?    
 > P.237 §20. Paging Smaller Tables
 
-> Prove that replacing the page that will be accessed *furthest in the future* is the optimal policy.
+> Prove that replacing the page that will be accessed *furthest in the future* is the optimal policy.    
 > P.244 §21. Beyond Physical Memory: Mechanisms
 
 
-> Why don't we use `doubly linked list + hash map` instead of approximating LRU?
+> Why don't we use `doubly linked list + hash map` instead of approximating LRU?    
+> P.254 §21. Beyond Physical Memory: Mechanisms
+
+
+> What is `pageable pge tables`?    
+> P.254 §21. Beyond Physical Memory: Mechanisms
+
+
+> List and summarize what you learned in memory virtualization chapter.    
 > P.254 §21. Beyond Physical Memory: Mechanisms
