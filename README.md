@@ -64,8 +64,8 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 
 || Chapter | Read | Homework |
 |-|-|-|-|
-|35|  |  |  |
-|36|  |  |  |
+|35| A Dialogue On Persistence | `23/07/15` | N/A |
+|36| I/O Devices | `23/07/15` | N/A |
 |37|  |  |  |
 |38|  |  |  |
 |39|  |  |  |
@@ -195,3 +195,14 @@ I could not figure out what corresponds to bounds register.
 
 > List and summarize what you learned in memory virtualization chapter.    
 > P.254 §21. Beyond Physical Memory: Mechanisms
+
+
+> In `ide_intr()` method,
+> wakeup(b); // wake waiting process    
+> ```
+> if ((ide_queue = b->qnext) != 0) // start next request
+>    ide_start_request(ide_queue); // (if one exists)
+> release(&ide_lock);
+> ```
+> P. 429 §36. I/O Devices    
+> Why this device driver is responsible for starting a subsequent disk I/O job? I think that `ide_start_request` in `ide_intr()` will be triggered after the process of `b` is finished, and it is too late. I mean, another process would call `ide_start_request` in `ide_rw`, and I think this probably happens earlier.
