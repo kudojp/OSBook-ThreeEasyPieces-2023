@@ -60,7 +60,7 @@ p0 can do 2nd and 3rd I/O while p2 and p3 are CPU busy.
 - (1) p1 is done I/O.
 
 The system resources are efficiently used.
-Running a process that just completed an I/O again immediately is a good idea. This is because that process may does I/O again later, other CPU tasks can be done meanwhile in other processes.
+Running a process that just completed an I/O again immediately is a good idea. This is because that process may does I/O again later, and other CPU tasks can be done meanwhile in other processes.
 
 
 ## 8. Run with randomly generated processes
