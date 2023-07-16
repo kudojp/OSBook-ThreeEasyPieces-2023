@@ -66,8 +66,8 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |-|-|-|-|
 |35| A Dialogue On Persistence | `23/07/15` | N/A |
 |36| I/O Devices | `23/07/15` | N/A |
-|37|  |  |  |
-|38|  |  |  |
+|37| Hard Disk Drives | `23/07/15` |  |
+|38| Redundant Array Of Inexpensive Disks (RAID) | `23/07/16` |  |
 |39|  |  |  |
 |40|  |  |  |
 |41|  |  |  |
@@ -206,3 +206,8 @@ I could not figure out what corresponds to bounds register.
 > ```
 > P. 429 §36. I/O Devices    
 > Why this device driver is responsible for starting a subsequent disk I/O job? I think that `ide_start_request` in `ide_intr()` will be triggered after the process of `b` is finished, and it is too late. I mean, another process would call `ide_start_request` in `ide_rw`, and I think this probably happens earlier.
+
+
+> Even if sequential is not possible, at least think about transferring data in large chunks: the bigger, the better.    
+> P. 429 §37. Hard Disk Drives    
+> 👉 Q. How can I achieve this? Which system call is used for this?
