@@ -68,7 +68,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |36| I/O Devices | `23/07/15` | N/A |
 |37| Hard Disk Drives | `23/07/15` |  |
 |38| Redundant Array Of Inexpensive Disks (RAID) | `23/07/16` |  |
-|39|  |  |  |
+|39| Interlude: Files and Directories | `23/07/17` |  |
 |40|  |  |  |
 |41|  |  |  |
 |42|  |  |  |
