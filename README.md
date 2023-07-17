@@ -69,7 +69,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |37| Hard Disk Drives | `23/07/15` |  |
 |38| Redundant Array Of Inexpensive Disks (RAID) | `23/07/16` |  |
 |39| Interlude: Files and Directories | `23/07/17` |  |
-|40|  |  |  |
+|40| File System Implementation | `23/07/17` |  |
 |41|  |  |  |
 |42|  |  |  |
 |43|  |  |  |
@@ -211,3 +211,8 @@ I could not figure out what corresponds to bounds register.
 > Even if sequential is not possible, at least think about transferring data in large chunks: the bigger, the better.    
 > P. 429 §37. Hard Disk Drives    
 > 👉 Q. How can I achieve this? Which system call is used for this?
+
+
+
+> P. 508 §40. File Systems Implementation    
+> Q. Which part of file system is implemented in kernel, and which part in a disk driver?
