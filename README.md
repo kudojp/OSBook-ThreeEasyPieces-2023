@@ -70,13 +70,18 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |38| Redundant Array Of Inexpensive Disks (RAID) | `23/07/16` |  |
 |39| Interlude: Files and Directories | `23/07/17` |  |
 |40| File System Implementation | `23/07/17` |  |
-|41|  |  |  |
-|42|  |  |  |
-|43|  |  |  |
-|44|  |  |  |
-|45|  |  |  |
-|46|  |  |  |
-|47|  |  |  |
+|41| Locality and The Fast File System | `23/07/22` |  |
+|42| Crash Consistency: FSCK and Journaling | `23/07/22` |  |
+|43| Log-Structured File Systems |  |  |
+|44| Flash-based SSDs |  |  |
+|45| Data Integrity and Protection |  |  |
+|46| Summary Dialogue on Persistence |  | N/A |
+
+### Ⅳ. Distribution
+
+|| Chapter | Read | Homework |
+|-|-|-|-|
+|47| A Dialogue On Distribution |  | N/A |
 |48|  |  |  |
 |49|  |  |  |
 |50|  |  |  |
