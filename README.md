@@ -72,7 +72,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |40| File System Implementation | `23/07/17` |  |
 |41| Locality and The Fast File System | `23/07/22` |  |
 |42| Crash Consistency: FSCK and Journaling | `23/07/22` |  |
-|43| Log-Structured File Systems |  |  |
+|43| Log-Structured File Systems | `23/07/23` |  |
 |44| Flash-based SSDs |  |  |
 |45| Data Integrity and Protection |  |  |
 |46| Summary Dialogue on Persistence |  | N/A |
@@ -221,3 +221,9 @@ I could not figure out what corresponds to bounds register.
 
 > P. 508 §40. File Systems Implementation    
 > Q. Which part of file system is implemented in kernel, and which part in a disk driver?
+
+
+
+> The authors describe an approach which tries to segregate hot and cold segments. A hot segment is one in which the contents are being frequently over-written; thus, for such a segment, the best policy is to wait a long time before cleaning it, as more and more blocks are getting over-written (in new segments) and thus being freed for use. A cold segment, in contrast, may have a few dead blocks but the rest of its contents are relatively stable. Thus, the authors conclude that one should clean cold segments sooner and hot segments later, and develop a heuristic that does exactly that.    
+> P. 557 §41. Log-Structured File Systems    
+> 👉 Q. Why is this?
