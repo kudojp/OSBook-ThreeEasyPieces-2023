@@ -73,9 +73,9 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |41| Locality and The Fast File System | `23/07/22` |  |
 |42| Crash Consistency: FSCK and Journaling | `23/07/22` |  |
 |43| Log-Structured File Systems | `23/07/23` |  |
-|44| Flash-based SSDs |  |  |
-|45| Data Integrity and Protection |  |  |
-|46| Summary Dialogue on Persistence |  | N/A |
+|44| Flash-based SSDs | `23/07/23` |  |
+|45| Data Integrity and Protection | `23/07/23` |  |
+|46| Summary Dialogue on Persistence | `23/07/23` | N/A |
 
 ### Ⅳ. Distribution
 
@@ -227,3 +227,34 @@ I could not figure out what corresponds to bounds register.
 > The authors describe an approach which tries to segregate hot and cold segments. A hot segment is one in which the contents are being frequently over-written; thus, for such a segment, the best policy is to wait a long time before cleaning it, as more and more blocks are getting over-written (in new segments) and thus being freed for use. A cold segment, in contrast, may have a few dead blocks but the rest of its contents are relatively stable. Thus, the authors conclude that one should clean cold segments sooner and hot segments later, and develop a heuristic that does exactly that.    
 > P. 557 §41. Log-Structured File Systems    
 > 👉 Q. Why is this?
+
+
+> Another reliability concern is program disturbance. To minimize such disturbance, FTLs will commonly program pages within an erased block in order, from low page to high page. This sequential-programming approach minimizes disturbance and is widely utilized.    
+> P. 569 §42. Flash-Based SSDs    
+> 👉 Q. Isn't it possible that writing to a page makes bits in the neighboring lower page flipped?
+
+
+> Some additional findings about LSEs are:
+> • Costly drives with more than one LSE are as likely to develop additional errors as cheaper drives.
+> P. 589 §43. Data Integrity and Protection    
+> 👉 Q. What do these mean?
+
+
+> Some findings about corruption:
+> • Chance of corruption varies greatly across different drive models within the same drive class.
+> P. 589 §43. Data Integrity and Protection    
+> 👉 Q. What do these mean?
+
+
+> The first failure mode of interest is called a misdirected write. This arises in disk and RAID controllers which write the data to disk correctly, except in the wrong location.
+> P. 594 §43. Data Integrity and Protection    
+> 👉 Q. What is the internal mechanism of this?
+
+
+> The time overheads induced by checksumming can be quite noticeable. Minimally, the CPU must compute the checksum over each block, both when the data is stored and when it is accessed.    
+> One approach is to combine data copying and checksumming into one streamlined activity; because the copy is needed anyhow (e.g., to copy the data from the kernel page cache into a user buffer), combined copying/checksumming can be quite effective.    
+> P. 596 §43. Data Integrity and Protection    
+> 👉 Q. Why is this so efficient? What is the internal mechanism of this?
+
+
+
