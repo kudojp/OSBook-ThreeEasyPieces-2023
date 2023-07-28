@@ -50,8 +50,8 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 || Chapter | Read | Homework |
 |-|-|-|-|
 |25| A Dialogue On Concurrency | `23/07/13` | N/A |
-|26|  |  |  |
-|27|  |  |  |
+|26| Concurrency: An Introduction | `23/07/27` |  |
+|27| Interlude: Thread API | `23/07/28` |  |
 |28|  |  |  |
 |29|  |  |  |
 |30|  |  |  |
@@ -201,6 +201,19 @@ I could not figure out what corresponds to bounds register.
 > List and summarize what you learned in memory virtualization chapter.    
 > P.254 §21. Beyond Physical Memory: Mechanisms
 
+> - int pthread_mutex_trylock(pthread_mutex_t *mutex);
+> - int pthread_mutex_timedlock(pthread_mutex_t *mutex, struct timespec *abs_timeout);
+>  Both of these versions should generally be avoided; however, there are a few cases where avoiding getting stuck (perhaps indefinitely) in a lock acquisition routine can be useful, as we’ll see in future chapters (e.g., when we study deadlock).    
+> P.309 §27. Interlude: Thread API    
+> Why these versions should generally be avoided?    
+> What are the pain points?    
+
+> To share data between threads, the values must be in the heap or otherwise some locale that is globally accessible.    
+> P.312 §27. Interlude: Thread API    
+> 👉 Q. What is locale that is globally accessible?
+
+For example, variables which are defined locally in the file and not in any scope.    
+(e.g. variables neither in main function nor any other functions.)
 
 > In `ide_intr()` method,
 > wakeup(b); // wake waiting process    
@@ -221,7 +234,6 @@ I could not figure out what corresponds to bounds register.
 
 > P. 508 §40. File Systems Implementation    
 > Q. Which part of file system is implemented in kernel, and which part in a disk driver?
-
 
 
 > The authors describe an approach which tries to segregate hot and cold segments. A hot segment is one in which the contents are being frequently over-written; thus, for such a segment, the best policy is to wait a long time before cleaning it, as more and more blocks are getting over-written (in new segments) and thus being freed for use. A cold segment, in contrast, may have a few dead blocks but the rest of its contents are relatively stable. Thus, the authors conclude that one should clean cold segments sooner and hot segments later, and develop a heuristic that does exactly that.    
