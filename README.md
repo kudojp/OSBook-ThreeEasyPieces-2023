@@ -52,7 +52,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |25| A Dialogue On Concurrency | `23/07/13` | N/A |
 |26| Concurrency: An Introduction | `23/07/27` |  |
 |27| Interlude: Thread API | `23/07/28` |  |
-|28|  |  |  |
+|28| Lock | `23/07/29` |  |
 |29|  |  |  |
 |30|  |  |  |
 |31|  |  |  |
@@ -214,6 +214,13 @@ I could not figure out what corresponds to bounds register.
 
 For example, variables which are defined locally in the file and not in any scope.    
 (e.g. variables neither in main function nor any other functions.)
+
+> lock mechanism of Solaris
+> Using Queues: Sleeping instead of spinning    
+> P.329 §28. Lock
+
+![Ruby Async](https://github.com/kudojp/Read-ThreeEasyPieces-OSBook2023/assets/44487754/575667f5-9482-41aa-8af9-db9e3015a7ee)
+
 
 > In `ide_intr()` method,
 > wakeup(b); // wake waiting process    
