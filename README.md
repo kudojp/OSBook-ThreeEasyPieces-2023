@@ -55,7 +55,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |28| Lock | `23/07/29` |  |
 |29| Lock-Based Concurrent Data Structure | `23/07/30` |  |
 |30| Condition Variables | `23/07/30` |  |
-|31| Semaphores |  |  |
+|31| Semaphores | `23/07/30` |  |
 |32| Common Concurrency Problems |  |  |
 |33| Event-based Concurrency (Advanced) |  |  |
 |34| Summary Dialog On Concurrency |  |  |
@@ -244,8 +244,19 @@ Is there any other way?
 > a single lock when first transitioning to multiprocessors,    
 > but when multi-CPU systems became the norm, became a performance bottleneck     
 > P. 348 §29. Lock-Based Concurrent Data Structure
+> 👉  Q. What are the differences between multiprocessors and multi-CPU systems?
 
-What are the differences between multiprocessors and multi-CPU systems?
+> Binary Semaphores
+> P.369 §30. Semaphores
+> 👉 Q. I think that the value of a binary lock (built with semaphore) can be 2 or more.    
+> In this way, if this is locked is used as `unlock (>val=2) -> lock (>val=1) -> lock (>val=0)`, two threads seem to be able to acquire locks.    
+> Is this correct?
+> 👉 Q. I think this semaphore can cause a deadlock when used as `wait() -> post()` order.    
+> In `wait()`, it takes mutex_lock and then does cond_wait. Then in `post()`, it waits to acquire mutex_lock, which is a deadlock.
+
+> Figure 31.16: Implementing Semaphores With Locks and CVs
+> P.381 §30. Semaphores
+
 
 
 > In `ide_intr()` method,
