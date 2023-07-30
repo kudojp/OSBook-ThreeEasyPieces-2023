@@ -53,7 +53,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |26| Concurrency: An Introduction | `23/07/27` |  |
 |27| Interlude: Thread API | `23/07/28` |  |
 |28| Lock | `23/07/29` |  |
-|29|  |  |  |
+|29| Lock-Based Concurrent Data Structure | `23/07/30` |  |
 |30|  |  |  |
 |31|  |  |  |
 |32|  |  |  |
@@ -220,6 +220,32 @@ For example, variables which are defined locally in the file and not in any scop
 > P.329 §28. Lock
 
 ![Ruby Async](https://github.com/kudojp/Read-ThreeEasyPieces-OSBook2023/assets/44487754/575667f5-9482-41aa-8af9-db9e3015a7ee)
+
+> In approximate counter implementation,    
+> `int cpu = threadID % NUMCPUS`
+> P. 341 §29. Lock-Based Concurrent Data Structure
+
+Is this really a correct way to get cpu core id which executes the current thread?
+Is there any other way?
+
+
+> In approximate counter implementation,    
+> `int cpu = threadID % NUMCPUS`
+> P. 348 §29. Lock-Based Concurrent Data Structure
+
+
+> other thread-safe structures like B-trees -> a database class is your best bet.    
+> P. 348 §29. Lock-Based Concurrent Data Structure    
+> 👉 Q. In PostgreSQL, one sub-process is created for one connection.    
+> How does it guarantee the "process-safeness" rather than thread-safeness?
+
+
+
+> a single lock when first transitioning to multiprocessors,    
+> but when multi-CPU systems became the norm, became a performance bottleneck     
+> P. 348 §29. Lock-Based Concurrent Data Structure
+
+What are the differences between multiprocessors and multi-CPU systems?
 
 
 > In `ide_intr()` method,
