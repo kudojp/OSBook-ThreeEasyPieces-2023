@@ -24,7 +24,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |7|Scheduling: Introduction |`23/07/05` | `23/07/10`|
 |8| Scheduling: The Multi-Level Feedback Queue|`23/07/05` | `23/07/10`|
 |9|Scheduling: Proportional Share |`23/07/05` |`23/07/10` |
-|10|Multiprocessor Scheduling | (Skipped) | |
+|10|Multiprocessor Scheduling (Advanced) | (Skipped) | |
 |11|Summary Dialogue on CPU Virtualization |`23/07/05` |N/A |
 
 **Memory Virtualization**
@@ -54,11 +54,11 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |27| Interlude: Thread API | `23/07/28` |  |
 |28| Lock | `23/07/29` |  |
 |29| Lock-Based Concurrent Data Structure | `23/07/30` |  |
-|30|  |  |  |
-|31|  |  |  |
-|32|  |  |  |
-|33|  |  |  |
-|34|  |  |  |
+|30| Condition Variables | `23/07/30` |  |
+|31| Semaphores |  |  |
+|32| Common Concurrency Problems |  |  |
+|33| Event-based Concurrency (Advanced) |  |  |
+|34| Summary Dialog On Concurrency |  |  |
 
 ### Ⅲ. Persistence Security
 
