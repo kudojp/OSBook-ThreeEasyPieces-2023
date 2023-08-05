@@ -58,7 +58,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |31| Semaphores | `23/07/30` |  |
 |32| Common Concurrency Problems | `23/07/30` |  |
 |33| Event-based Concurrency (Advanced) |  |  |
-|34| Summary Dialog On Concurrency |  |  |
+|34| Summary Dialog On Concurrency | `23/07/30` |  |
 
 ### Ⅲ. Persistence Security
 
