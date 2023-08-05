@@ -57,7 +57,7 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |30| Condition Variables | `23/07/30` |  |
 |31| Semaphores | `23/07/30` |  |
 |32| Common Concurrency Problems | `23/07/30` |  |
-|33| Event-based Concurrency (Advanced) |  |  |
+|33| Event-based Concurrency (Advanced) | `23/08/05` |  |
 |34| Summary Dialog On Concurrency | `23/07/30` |  |
 
 ### Ⅲ. Persistence Security
