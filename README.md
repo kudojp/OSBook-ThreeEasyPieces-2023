@@ -17,14 +17,14 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 
 || Chapter | Read | Homework |
 |-|-|-|-|
-|3| A Dialogue on Virtualization| `23/07/03`| N/A|
+|3| A Dialogue on CPU Virtualization| `23/07/03`| N/A|
 |4| The Abstraction: The Process | `23/07/03` |`23/07/03`|
 |5| Interlude: Process API | `23/07/04`| `23/07/09` (Q8 skipped)|
 |6|Mechanism: Limited Direct Execution |`23/07/04` | (Skipped)|
 |7|Scheduling: Introduction |`23/07/05` | `23/07/10`|
 |8| Scheduling: The Multi-Level Feedback Queue|`23/07/05` | `23/07/10`|
 |9|Scheduling: Proportional Share |`23/07/05` |`23/07/10` |
-|10|Multiprocessor Scheduling (Advanced) | (Skipped) | |
+|10|Multiprocessor Scheduling (Advanced) | `23/08/05` | |
 |11|Summary Dialogue on CPU Virtualization |`23/07/05` |N/A |
 
 **Memory Virtualization**
@@ -43,28 +43,30 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |21|Beyond Physical Memory: Mechanisms |`23/07/12` | |
 |22|Beyond Physical Memory: Policies |`23/07/12` | |
 |23|Complex Virtual Memory Systems |`23/07/13` | |
-|24| Summary Dialog On Memory Virtualization |`23/07/13` |N/A |
+|24| Summary Dialog on Memory Virtualization |`23/07/13` |N/A |
 
 ### II. Concurrency
 
 || Chapter | Read | Homework |
 |-|-|-|-|
-|25| A Dialogue On Concurrency | `23/07/13` | N/A |
+|25| A Dialogue on Concurrency | `23/07/13` | N/A |
 |26| Concurrency: An Introduction | `23/07/27` |  |
 |27| Interlude: Thread API | `23/07/28` |  |
 |28| Lock | `23/07/29` |  |
 |29| Lock-Based Concurrent Data Structure | `23/07/30` |  |
 |30| Condition Variables | `23/07/30` |  |
 |31| Semaphores | `23/07/30` |  |
-|32| Common Concurrency Problems |  |  |
+|32| Common Concurrency Problems | `23/07/30` |  |
 |33| Event-based Concurrency (Advanced) |  |  |
 |34| Summary Dialog On Concurrency |  |  |
 
 ### Ⅲ. Persistence Security
 
+**Local File System**
+
 || Chapter | Read | Homework |
 |-|-|-|-|
-|35| A Dialogue On Persistence | `23/07/15` | N/A |
+|35| A Dialogue on Persistence | `23/07/15` | N/A |
 |36| I/O Devices | `23/07/15` | N/A |
 |37| Hard Disk Drives | `23/07/15` |  |
 |38| Redundant Array Of Inexpensive Disks (RAID) | `23/07/16` |  |
@@ -77,15 +79,15 @@ Learnings from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/
 |45| Data Integrity and Protection | `23/07/23` |  |
 |46| Summary Dialogue on Persistence | `23/07/23` | N/A |
 
-### Ⅳ. Distribution
+**Distributed File System**
 
 || Chapter | Read | Homework |
 |-|-|-|-|
-|47| A Dialogue On Distribution |  | N/A |
-|48|  |  |  |
-|49|  |  |  |
-|50|  |  |  |
-|51|  |  |  |
+|47| A Dialogue on Distribution  | `23/08/04` | N/A |
+|48| Distributed Systems | `23/08/04` |  |
+|49| Network File System (NFS) | `23/08/05` |  |
+|50| Andrew File System (AFS) | `23/08/05` |  |
+|51| Summary Dialogue on Distribution | `23/08/05` |  |
 
 ## Links which helped me
 
@@ -312,5 +314,17 @@ Is there any other way?
 > P. 596 §43. Data Integrity and Protection    
 > 👉 Q. Why is this so efficient? What is the internal mechanism of this?
 
+> `myaddr.sin_port = htons(port);` (in `UDP_Open()`)    
+> `addr->sin_port = htons(port); // network byte order` (in `UDP_FillSockAddr()`)    
+> P.608 §43. Distributed Systems    
+> 👉 Q. Why are ports converted from host order to machine order, but families are not?
 
+> NFSv2 implementations solve these cache consistency problems in two ways. First, to address update visibility, clients implement what is sometimes called flush-on-close (a.k.a., close-to-open) consistency semantics;    
+> specifically, when a file is written to and subsequently closed by a client application, the client flushes all updates (i.e, dirty pages in the cache) to the server. With flush-on-close consistency, NFS ensures that a subsequent open from another node will see the latest file version.    
+> P.632 §43. Sun's network file system    
+> 👉 Q. How NFS sustains update visibility, not in the case when a file is updated but NOT updated by another client?
 
+> The designers of AFS, given their experience in measuring how file systems were used, made certain workload assumptions;    
+> in particular, they assumed that most files were not frequently shared, and accessed sequentially in their entirety. Given those assumptions, the AFS design makes perfect sense.    
+> P.649 §43. The Andrew network file system    
+> 👉 Q. Explain this in detail.
